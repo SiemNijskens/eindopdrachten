@@ -14,7 +14,7 @@ public class EindopdrachWeek1 {
         Arrays.fill(blanco, '#');
 
         int countdown = 0;
-
+        String algeraden = "";
         do {
             char gokje = guessInput('g');
             int check = 0;
@@ -28,16 +28,21 @@ public class EindopdrachWeek1 {
                 }
             }
             // als de integer check hoger is dan 0 heb je goed geraden en gaat de countdown niet omhoog
-            if (check > 0) {
+            if (check > 0 ) {
                 System.out.println("Goed geraden");
                 System.out.println(blanco);
                 // anders gaat de countdown wel omhoog en krijg je te zien hoevaar je nog mag gokken
-            } else {
+            } else if (algeraden.contains(Character.toString(gokje))|| String.valueOf(blanco).contains(Character.toString(gokje))){
+                System.out.println("die letter heb je al geraden");
+                System.out.println("Je hebt de volgende letters al geraden: " + algeraden);
+            }
+            else {
                 System.out.println("helaas niet goed geraden");
                 countdown++;
-
+                algeraden = algeraden + " " + gokje;
                 System.out.println(blanco);
                 System.out.println("Je mag nog " + (10 - countdown) + " keer gokken");
+                System.out.println("Je hebt de volgende letters al geraden: " + algeraden);
             }
 
         }
@@ -66,14 +71,15 @@ public class EindopdrachWeek1 {
         System.out.println("Wat is het galgje woord?");
         Scanner scanner = new Scanner(System.in);
         String woord = scanner.nextLine();
-        char[] woordarray = woord.toCharArray();
-        return woordarray;
+        woord = woord.toLowerCase();
+        return woord.toCharArray();
     }
 
     static private char guessInput(char naam) {
         System.out.println("Welke letter wil je gokken?");
         Scanner scanner = new Scanner(System.in);
         char gok = scanner.next().charAt(0);
+        gok = Character.toLowerCase(gok);
         return gok;
     }
 }
