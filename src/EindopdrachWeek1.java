@@ -5,13 +5,15 @@ public class EindopdrachWeek1 {
     public static void main(String[] args) {
         char[] woordarray = getInput("woord");
 
-        int length = woordarray.length;
         for (int j = 0; j < 50; ++j) {
             System.out.println();
         }
+
+        int length = woordarray.length;
         char[] blanco = new char[length];
 
         Arrays.fill(blanco, '#');
+
 
         int countdown = 0;
         String algeraden = "";
@@ -31,11 +33,12 @@ public class EindopdrachWeek1 {
             if (check > 0 ) {
                 System.out.println("Goed geraden");
                 System.out.println(blanco);
-                // anders gaat de countdown wel omhoog en krijg je te zien hoevaar je nog mag gokken
+                // als je de letter al geraden hebt print ie dat ook en ook welke letters je al geraden hebt
             } else if (algeraden.contains(Character.toString(gokje))|| String.valueOf(blanco).contains(Character.toString(gokje))){
                 System.out.println("die letter heb je al geraden");
                 System.out.println("Je hebt de volgende letters al geraden: " + algeraden);
             }
+            // anders gaat de countdown wel omhoog en krijg je te zien hoevaar je nog mag gokken
             else {
                 System.out.println("helaas niet goed geraden");
                 countdown++;
